@@ -19,7 +19,7 @@ function find_clang_format_command {
         COMMAND_NAME="clang-format-$VERSION"
         TMP_CLANG_FORMAT="$(which $COMMAND_NAME)"
         if [ "$TMP_CLANG_FORMAT" != "" ]; then
-            echo "Found $COMMAND_NAME"
+            echo "Using $COMMAND_NAME"
             CLANG_FORMAT="$TMP_CLANG_FORMAT"
             break
         fi
@@ -28,9 +28,8 @@ function find_clang_format_command {
 
 function process_file_in_place {
     local FILE=$1
-    local COMMAND="$COMMAND -i $FILE"
 
-    echo "$COMMAND $FILE"
+    $COMMAND -i $FILE
 }
 
 function show_diff_of_file {
